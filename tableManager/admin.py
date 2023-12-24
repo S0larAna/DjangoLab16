@@ -5,5 +5,4 @@ from .models import *
 admin.site.register(Client)
 admin.site.register(Store)
 admin.site.register(Jewelry)
-admin.site.register(User)
 

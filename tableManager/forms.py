@@ -3,6 +3,9 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
+import re
+
+pattern_name = re.compile(r'^[А-Я][а-я]*$')
 
 class ClientForm(ModelForm):
     class Meta:
@@ -37,7 +40,7 @@ class JewelryForm(ModelForm):
         }
 
         def __init__(self, *args, **kwargs):
-            super(StoreForm, self).__init__(*args, **kwargs)
+            super(JewelryForm, self).__init__(*args, **kwargs)
             self.fields['type'].label = 'Type'
             self.fields['defects'].label = 'Defects'
             self.fields['date'].label = 'Date'
@@ -54,4 +57,28 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name', 'patronymic', 'email', 'password1', 'password2']
 
+    def clean(self):
+
+        # data from the form is fetched using super function
+        super(CreateUserForm, self).clean()
+
+        # extract the username and text field from the data
+        first_name = self.cleaned_data.get('first_name')
+        last_name = self.cleaned_data.get('last_name')
+        patronymic = self.cleaned_data.get('patronymic')
+        text = self.cleaned_data.get('text')
+
+        # conditions to be met for the username length
+        if not bool(pattern_name.match(first_name)):
+            self._errors['first_name'] = self.error_class([
+                'Неверный формат'])
+        if not bool(pattern_name.match(last_name)):
+            self._errors['last_name'] = self.error_class([
+                'Неверный формат'])
+        if not bool(pattern_name.match(patronymic)):
+            self._errors['patronymic'] = self.error_class([
+                'Неверный формат'])
+
+        # return any errors if found
+        return self.cleaned_data
 

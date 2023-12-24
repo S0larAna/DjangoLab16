@@ -18,6 +18,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div id="navbar">
+        {% if request.user.is_staff %}
         <a href="http://127.0.0.1:8000/">
         <button>Dashboard</button>
          </a>
@@ -30,6 +31,11 @@
         <a href="http://127.0.0.1:8000/stores">
 <button>Stores</button>
         </a>
+            {% else %}
+            <a href="http://127.0.0.1:8000/user-page/jewelry">
+<button href="http://127.0.0.1:8000/user-page/jewelry">Jewelry</button>
+            </a>
+        {% endif %}
     </div>
 <div>
     <button class="push">Profile</button>

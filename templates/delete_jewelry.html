@@ -1,14 +1,21 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
 
     <div id="delete">
 <p>Are you sure you want to delete {{ item }}? </p>
     <div id ='delete-form'>
+        {% if request.user|has_group:"admin" %}
 <form action="{% url 'delete_jewelry' item.id %}" method="POST">
 {% csrf_token %}
     <a href="{% url 'jewelry' %}">Cancel</a>
+            {% else %}
+            <form action="{% url 'delete_user_jewelry' item.id %}" method="POST">
+{% csrf_token %}
+    <a href="{% url 'user_jewelry' %}">Cancel</a>
+    {% endif %}
 <input type="submit" name="Confirm" value="Confirm">
 </form>
     </div>

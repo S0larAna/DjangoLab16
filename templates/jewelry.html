@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
 <h1>Jewelry</h1>
@@ -24,13 +25,23 @@
       <td>{{ i.defects }}</td>
         <td>{{ i.date }}</td>
         <td>{{ i.price }}</td>
+            {% if request.user|has_group:"admin" %}
         <td><a href="{% url 'delete_jewelry' i.id %}"><img src="{% static 'images/delete.png' %}" width="25" height="25"></a></td>
             <td><a href='{% url 'update_jewelry' i.id %}'><img src="{% static 'images/pen.png' %}" width="25" height="25"></a></td>
+                {% else %}
+                <td><a href="{% url 'delete_user_jewelry' i.id %}"><img src="{% static 'images/delete.png' %}" width="25" height="25"></a></td>
+            <td><a href='{% url 'update_user_jewelry' i.id %}'><img src="{% static 'images/pen.png' %}" width="25" height="25"></a></td>
+        {% endif %}
         </tr>
   {% endfor %}
   </tbody>
 </table>
     <div id = 'create'>
     <a class="btn btn-primary" href="create_jewelry/" role="button">Add jewelry</a>
+    </div>
+    <div id = 'create'>
+    <a class="btn btn-primary" href="{% url 'xls_jewelry' %}" role="button">Export to XLS</a>
+    <a class="btn btn-primary" href="{% url 'doc_jewelry' %}" role="button">Export to Word</a>
+    <a class="btn btn-primary" href="{% url 'pdf_jewelry' %}" role="button">Export to PDF</a>
     </div>
 {% endblock %}
