@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Clients</h1>
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Second Name</th>
+      <th scope="col">Patronymic</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Checking Account</th>
+        <th scope="col">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in clients %}
+        <tr>
+        <th scope="row">{{ i.id }}</th>
+            <td>{{ i.firstname }}</td>
+      <td>{{ i.secondname }}</td>
+      <td>{{ i.patronymic }}</td>
+        <td>{{ i.phone }}</td>
+        <td>{{ i.checking_account }}</td>
+        <td>{{ i.address }}</td>
+            <td><a href="{% url 'delete_client' i.id %}"><img src="{% static 'images/delete.png' %}" width="25" height="25"></a></td>
+            <td><a href='{% url 'update_client' i.id %}'><img src="{% static 'images/pen.png' %}" width="25" height="25"></a></td>
+        </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    <div id = 'create'>
+    <a class="btn btn-primary" href="create_client/" role="button">Add client</a>
+    </div>
+{% endblock %}

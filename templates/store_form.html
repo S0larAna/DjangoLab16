@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <div class="form-container">
+    <form action="" method="POST">
+    {% csrf_token %}
+         <label for="{{ form.address.id_for_label }}">{{ form.address.label }} </label>
+        {{ form.address }}
+        <div id = 'checkbox'>
+        <label class="form-check-label" for="exampleCheck1" for="{{ form.opened.id_for_label }}">{{ form.opened.label }}</label>
+        {{ form.opened }}
+            </div>
+<input type="submit" name="Submit" value="Submit">
+    </form>
+    </div>
+{% endblock %}

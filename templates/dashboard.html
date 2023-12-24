@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Dashboard</h1>
+    <div class = "dashboard">
+    <div class="card">
+  <div class="card-body">
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Client</th>
+      <th scope="col">Number of Commissions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for client in clients %}
+  <tr>
+      <td>{{ client.id }}</td>
+        <td>{{ client.item_count }}</td>
+  </tr>
+      {% endfor %}
+  </tbody>
+</table>
+  </div>
+</div>
+
+    <div class="card">
+  <div class="card-body">
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Store</th>
+      <th scope="col">Currently in Storage</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for store in stores%}
+  <tr>
+      <td>{{ store.id }}</td>
+  <td>{{ store.item_count }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+  </div>
+</div>
+    </div>
+{% endblock %}

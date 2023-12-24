@@ -1,0 +1,67 @@
+ #submit-button{
+     margin-top:20px;
+ }
+
+
+body {
+     font-family: Arial, sans-serif;
+ }
+
+
+ button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+ }
+
+ form{
+    display: flex;
+    flex-direction: column;
+     width: 500px;
+}
+
+ .form-container{
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-content: center;
+     flex-wrap: wrap;
+ }
+
+ #checkbox{
+     display: flex;
+     flex-direction: row;
+ }
+
+#navbar{
+    display: flex;
+    flex-direction: row;
+}
+
+.push {
+    margin-left: auto;
+}
+
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#create{
+    display: flex;
+    justify-content: right;
+    padding-right: 50px;
+}
+
+.btn {
+    width: 200px;
+}
+      #delete{
+     display: flex;
+     flex-direction: column;
+ }
+      #delete-form{
+     display: flex;
+    flex-direction: row;
+ }

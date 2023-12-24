@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Jewelry</h1>
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Type</th>
+      <th scope="col">Material</th>
+      <th scope="col">Defects</th>
+        <th scope="col">Date</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in items %}
+        <tr>
+        <th scope="row">{{ i.id }}</th>
+            <td>{{ i.type }}</td>
+      <td>{{ i.material }}</td>
+      <td>{{ i.defects }}</td>
+        <td>{{ i.date }}</td>
+        <td>{{ i.price }}</td>
+        <td><a href="{% url 'delete_jewelry' i.id %}"><img src="{% static 'images/delete.png' %}" width="25" height="25"></a></td>
+            <td><a href='{% url 'update_jewelry' i.id %}'><img src="{% static 'images/pen.png' %}" width="25" height="25"></a></td>
+        </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    <div id = 'create'>
+    <a class="btn btn-primary" href="create_jewelry/" role="button">Add jewelry</a>
+    </div>
+{% endblock %}

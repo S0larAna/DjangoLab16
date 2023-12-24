@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <div class="form-container">
+    <form action="" method="POST">
+    {% csrf_token %}
+         <label for="{{ form.firstname.id_for_label }}">{{ form.firstname.label }} </label>
+        {{ form.firstname }}
+        <label for="{{ form.secondname.id_for_label }}">{{ form.secondname.label }} </label>
+        {{ form.secondname }}
+        <label for="{{ form.patronymic.id_for_label }}">{{ form.patronymic.label }} </label>
+        {{ form.patronymic }}
+        <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }} </label>
+        {{ form.phone }}
+        <label for="{{ form.checking_account.id_for_label }}">{{ form.checking_account.label }} </label>
+        {{ form.checking_account }}
+        <label for="{{ form.address.id_for_label }}">{{ form.address.label }} </label>
+        {{ form.address }}
+<input type="submit" name="Submit" value="Submit">
+    </form>
+    </div>
+{% endblock %}

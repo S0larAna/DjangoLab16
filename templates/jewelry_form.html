@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="form-container">
+    <form action="" method="POST">
+    {% csrf_token %}
+        <label for="{{ form.type.id_for_label }}">{{ form.type.label }} </label>
+        {{ form.type }}
+        <label for="{{ form.material.id_for_label }}">{{ form.material.label }} </label>
+        {{ form.material }}
+        <label for="{{ form.defects.id_for_label }}">{{ form.defects.label }} </label>
+        {{ form.defects }}
+        <label for="{{ form.date.id_for_label }}">{{ form.date.label }} </label>
+        {{ form.date }}
+        <label for="{{ form.price.id_for_label }}">{{ form.price.label }} </label>
+        {{ form.price }}
+        <label for="{{ form.store.id_for_label }}">{{ form.store.label }} </label>
+        {{ form.store }}
+        <label for="{{ form.client.id_for_label }}">{{ form.client.label }} </label>
+        {{ form.client }}
+        <input id="submit-button" class="btn btn-primary" type="submit" name="Submit" value="Submit">
+    </form>
+    </div>
+
+{% endblock %}
